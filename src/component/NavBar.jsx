@@ -5,9 +5,8 @@ import logo from '../assets/logo.png'
 const Navbar = () => {
     const user = true;
     return (
-        <div className="navbar px-4 lg:px-10">
+        <div className="navbar px-4 lg:px-10 shadow">
             <div className="navbar-start">
-
                 {/* Drop Down For Small Devices */}
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
