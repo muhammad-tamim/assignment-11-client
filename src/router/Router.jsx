@@ -8,11 +8,12 @@ import AvailableCars from '../pages/AvailableCars';
 import AddCar from '../pages/AddCar';
 import MyCars from '../pages/MyCars';
 import MyBookings from '../pages/MyBookings';
+import ErrorPage from '../component/ErrorPage';
 
 const Router = createBrowserRouter([
     {
         path: '*',
-        // error page
+        Component: ErrorPage
     },
     {
         path: '/',
