@@ -76,19 +76,19 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit} noValidate="" action="" className="space-y-6">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-white">Your Name</label>
-                        <input type="text" name="name" id="userName" placeholder="Name" className="outline outline-white w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input type="text" name="name" required id="userName" placeholder="Name" className="outline outline-white w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-white">Photo URL</label>
-                        <input type="text" name="url" id="userUrl" placeholder="URL" className="outline outline-white w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input type="url" name="url" required id="userUrl" placeholder="URL" className="outline outline-white w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-white">Email</label>
-                        <input type="text" name="email" id="userEmail" placeholder="Email" className="outline outline-white w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input type="email" name="email" required id="userEmail" placeholder="Email" className="outline outline-white w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-white">Password</label>
-                        <input type="text" name="password" id="password" placeholder="Password" className="outline outline-white  w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input type="text" name="password" required id="password" placeholder="Password" className="outline outline-white  w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         {passwordError && <p className="text-red-400 text-xs mt-1">{passwordError}</p>}
                         <small className="text-xs text-white">Password must contain at least 6 characters, 1 uppercase and 1 lowercase letter.</small>
                     </div>
