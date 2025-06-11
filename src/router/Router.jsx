@@ -4,6 +4,10 @@ import RootLayout from '../layout/RootLayout';
 import Home from '../component/Home/Home';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import AvailableCars from '../pages/AvailableCars';
+import AddCar from '../pages/AddCar';
+import MyCars from '../pages/MyCars';
+import MyBookings from '../pages/MyBookings';
 
 const Router = createBrowserRouter([
     {
@@ -25,6 +29,22 @@ const Router = createBrowserRouter([
             {
                 path: '/signUp',
                 Component: SignUp
+            },
+            {
+                path: '/AvailableCars',
+                Component: AvailableCars
+            },
+            {
+                path: '/AddCar',
+                Component: AddCar
+            },
+            {
+                path: '/MyCars',
+                Component: MyCars
+            },
+            {
+                path: '/MyBookings',
+                Component: MyBookings
             },
 
         ]
