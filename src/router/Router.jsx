@@ -9,6 +9,7 @@ import AddCar from '../pages/AddCar';
 import MyCars from '../pages/MyCars';
 import MyBookings from '../pages/MyBookings';
 import ErrorPage from '../component/ErrorPage';
+import PrivateRouter from './PrivateRouter';
 
 const Router = createBrowserRouter([
     {
@@ -37,15 +38,27 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/AddCar',
-                Component: AddCar
+                element: (
+                    <PrivateRouter>
+                        <AddCar></AddCar>
+                    </PrivateRouter>
+                )
             },
             {
                 path: '/MyCars',
-                Component: MyCars
+                element: (
+                    <PrivateRouter>
+                        <MyCars></MyCars>
+                    </PrivateRouter>
+                )
             },
             {
                 path: '/MyBookings',
-                Component: MyBookings
+                element: (
+                    <PrivateRouter>
+                        <MyBookings></MyBookings>
+                    </PrivateRouter>
+                )
             },
 
         ]
