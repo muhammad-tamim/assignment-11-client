@@ -1,12 +1,116 @@
-import React from 'react';
 import Navbar from '../component/Navbar';
-import { Outlet } from 'react-router';
+import React, { createContext, useEffect, useState } from 'react';
+import { Outlet, useLoaderData, useNavigate } from 'react-router';
+import toast, { Toaster } from 'react-hot-toast';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { auth } from '../firebase/firebase.config';
+import { provider } from '../firebase/GoogleAuthProvider';
+
+
+
+
+export const context = createContext();
 
 const RootLayout = () => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true)
+    const [paidBills, setPaidBills] = useState([])
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return () => unsubscribe()
+    }, [])
+
+    const handleSignUp = (email, password, url, name) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(async () => {
+                await updateProfile(auth.currentUser, {
+                    photoURL: url,
+                    displayName: name,
+                })
+                await signOut(auth);
+                toast.success('SignUp SuccessFully!');
+                navigate("/signin")
+            })
+            .catch((error) => {
+                toast.error(`${error.message}`);
+            })
+    }
+
+    const handleSignIn = (email, password, onSuccess) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                toast.success('SignIn SuccessFully!');
+                setUser(userCredential.user);
+                if (onSuccess) onSuccess()
+            })
+            .catch((error) => {
+                toast.error(`${error.message}`);
+            })
+    }
+
+    const handleSignOut = () => {
+        signOut(auth)
+            .then(() => {
+                toast.success('SignOut SuccessFully!');
+                navigate("/")
+            })
+            .catch((error) => {
+                toast.error(`${error.message}`);
+            })
+    }
+
+    const handleGoogleSignIn = (onSuccess) => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                toast.success('SignIn SuccessFully with google!');
+                setUser(result.user)
+                if (onSuccess) onSuccess()
+            })
+            .catch((error) => {
+                toast.error(`${error.message}`);
+            })
+    }
+
+    const handleUpdateProfile = (name, url) => {
+        updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: url,
+        })
+            .then(() => {
+                toast.success('Update Profile Successfully');
+                navigate('/profile')
+            })
+            .catch((error) => {
+                toast.error(`${error.message}`);
+            })
+    }
+
+    const contextValue = {
+        user,
+        loading,
+        paidBills,
+        setPaidBills,
+        setUser,
+        handleSignUp,
+        handleSignIn,
+        handleSignOut,
+        handleGoogleSignIn,
+        handleUpdateProfile
+    }
     return (
         <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
+            < Toaster position='top-right' />
+            <context.Provider value={contextValue}>
+                <Navbar></Navbar>
+                <Outlet></Outlet>
+
+            </context.Provider>
         </div>
     );
 };

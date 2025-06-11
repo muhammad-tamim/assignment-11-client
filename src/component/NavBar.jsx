@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo.png'
+import { context } from '../layout/RootLayout';
+import LoadingSpinner from './LoadingSpinner';
 
 const Navbar = () => {
-    const user = true;
+    const contextData = useContext(context);
+
+    if (!contextData || !contextData.handleSignUp) {
+        return <LoadingSpinner></LoadingSpinner>;
+    }
+    const { user, handleSignOut } = contextData || {};
+
+    const handleSubmit = () => {
+        handleSignOut()
+    }
     return (
         <div className="navbar px-4 lg:px-10 shadow">
             <div className="navbar-start">
