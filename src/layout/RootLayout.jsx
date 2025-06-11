@@ -5,10 +5,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import Navbar from '../component/Navbar';
 import { auth } from '../firebase/firebase.config';
 import { provider } from '../firebase/GoogleAuthProvider';
-
-
-
-
+import Footer from '../component/Footer';
 
 export const context = createContext();
 
@@ -110,6 +107,7 @@ const RootLayout = () => {
             <context.Provider value={contextValue}>
                 <Navbar></Navbar>
                 <Outlet></Outlet>
+                <Footer></Footer>
             </context.Provider>
         </div>
     );
