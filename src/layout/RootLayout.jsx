@@ -1,10 +1,11 @@
-import Navbar from '../component/Navbar';
 import React, { createContext, useEffect, useState } from 'react';
 import { Outlet, useLoaderData, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import Navbar from '../component/Navbar';
 import { auth } from '../firebase/firebase.config';
 import { provider } from '../firebase/GoogleAuthProvider';
+
 
 
 
@@ -109,7 +110,6 @@ const RootLayout = () => {
             <context.Provider value={contextValue}>
                 <Navbar></Navbar>
                 <Outlet></Outlet>
-
             </context.Provider>
         </div>
     );

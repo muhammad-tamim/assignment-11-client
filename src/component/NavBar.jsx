@@ -34,8 +34,7 @@ const Navbar = () => {
                         </li>
                         {
                             !user ? (
-                                <li className='hover:bg-primary hover:text-white hover:font-medium rounded-md'>
-
+                                <li className='hover:text-primary'>
                                     <NavLink
                                         to="/signin"
                                         className={({ isActive }) =>
@@ -84,7 +83,7 @@ const Navbar = () => {
 
                     {
                         !user ? (
-                            <li className='hover:bg-primary hover:text-white hover:font-medium rounded-md'>
+                            <li className='hover:text-primary'>
 
                                 <NavLink
                                     to="/signin"
