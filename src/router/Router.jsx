@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router';
 import RootLayout from '../layout/RootLayout';
-import Home from '../component/Home/Home';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import AvailableCars from '../pages/AvailableCars';
@@ -10,6 +9,7 @@ import MyCars from '../pages/MyCars';
 import MyBookings from '../pages/MyBookings';
 import ErrorPage from '../component/ErrorPage';
 import PrivateRouter from './PrivateRouter';
+import Home from '../pages/Home';
 
 const Router = createBrowserRouter([
     {
