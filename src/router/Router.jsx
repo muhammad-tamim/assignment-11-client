@@ -10,6 +10,8 @@ import MyBookings from '../pages/MyBookings';
 import ErrorPage from '../component/ErrorPage';
 import PrivateRouter from './PrivateRouter';
 import Home from '../pages/Home';
+import carDetails from '../pages/carDetails';
+import LoadingSpinner from '../component/LoadingSpinner';
 
 const Router = createBrowserRouter([
     {
@@ -35,6 +37,12 @@ const Router = createBrowserRouter([
             {
                 path: '/AvailableCars',
                 Component: AvailableCars
+            },
+            {
+                path: '/carDetails/:id',
+                Component: carDetails,
+                // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/carDetails/${params.id}`),
+                // hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>
             },
             {
                 path: '/AddCar',
