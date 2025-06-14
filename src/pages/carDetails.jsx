@@ -10,6 +10,9 @@ const carDetails = () => {
     const [car, setCar] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [totalCost, setTotalCost] = useState(0);
 
     // get specific id data form the server
     useEffect(() => {
@@ -22,7 +25,19 @@ const carDetails = () => {
             });
     }, [id]);
 
-    if (loading) return <LoadingSpinner></LoadingSpinner>;
+    // calculate total price
+    useEffect(() => {
+        if (startDate && endDate && car?.rentalPrice) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const diffInDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+            if (diffInDays > 0) {
+                setTotalCost(diffInDays * car.rentalPrice);
+            } else {
+                setTotalCost(0);
+            }
+        }
+    }, [startDate, endDate, car?.rentalPrice]);
 
     // send updated booked data to the server
     const handleBooking = () => {
@@ -30,17 +45,31 @@ const carDetails = () => {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                startDate,
+                endDate,
+                totalCost
+            })
         })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
                     toast.success('Car booked successfully!');
-                    setCar(prev => ({ ...prev, bookingCount: prev.bookingCount + 1 }));
+                    setCar(prev => ({
+                        ...prev,
+                        bookingCount: prev.bookingCount + 1,
+                        startDate,
+                        endDate,
+                        totalCost
+                    }));
                 } else {
                     toast.error('Booking failed!');
                 }
                 setShowModal(false);
+                setStartDate('');
+                setEndDate('');
+                setTotalCost(0);
             })
             .catch(error => {
                 console.error('Booking error:', error);
@@ -49,9 +78,8 @@ const carDetails = () => {
             });
     };
 
+    if (loading) return <LoadingSpinner></LoadingSpinner>;
 
-
-    console.log(car)
     return (
         <>
             <Toaster position='top-right' />
@@ -82,26 +110,38 @@ const carDetails = () => {
                             <div method="dialog" className="modal-box max-w-xl w-full">
                                 <h3 className="font-bold text-center text-xl mb-4">Confirm Booking</h3>
 
-                                <div className="mb-4">
+                                <div className="mb-4 space-y-2">
                                     <p><strong>Model:</strong> {car.carModel}</p>
                                     <p><strong>Price per Day:</strong> ${car.rentalPrice}</p>
                                     <p><strong>Location:</strong> {car.location}</p>
                                     <p><strong>Current Bookings:</strong> {car.bookingCount || 0}</p>
+
+                                    <label className="block">
+                                        <span>Start Date:</span>
+                                        <input
+                                            type="date"
+                                            className="input input-bordered w-full"
+                                            value={startDate}
+                                            onChange={(e) => setStartDate(e.target.value)}
+                                        />
+                                    </label>
+
+                                    <label className="block">
+                                        <span>End Date:</span>
+                                        <input
+                                            type="date"
+                                            className="input input-bordered w-full"
+                                            value={endDate}
+                                            onChange={(e) => setEndDate(e.target.value)}
+                                        />
+                                    </label>
+
+                                    <p><strong>Total Cost:</strong> ${totalCost || 0}</p>
                                 </div>
 
                                 <div className="modal-action">
-                                    <button
-                                        onClick={handleBooking}
-                                        className="btn btn-primary"
-                                    >
-                                        Confirm Booking
-                                    </button>
-                                    <button
-                                        onClick={() => setShowModal(false)}
-                                        className="btn"
-                                    >
-                                        Cancel
-                                    </button>
+                                    <button onClick={handleBooking} className="btn btn-primary">Confirm Booking</button>
+                                    <button onClick={() => setShowModal(false)} className="btn">Cancel</button>
                                 </div>
                             </div>
                         </dialog>
