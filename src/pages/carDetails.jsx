@@ -49,7 +49,8 @@ const carDetails = () => {
             body: JSON.stringify({
                 startDate,
                 endDate,
-                totalCost
+                totalCost,
+                bookingStatus: 'booked',
             })
         })
             .then(res => res.json())
@@ -61,7 +62,8 @@ const carDetails = () => {
                         bookingCount: prev.bookingCount + 1,
                         startDate,
                         endDate,
-                        totalCost
+                        totalCost,
+                        bookingStatus: 'booked',
                     }));
                 } else {
                     toast.error('Booking failed!');
