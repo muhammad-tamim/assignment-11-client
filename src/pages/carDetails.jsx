@@ -4,8 +4,17 @@ import { useState } from 'react';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../component/LoadingSpinner';
 import toast, { Toaster } from 'react-hot-toast';
+import { context } from '../layout/RootLayout';
+import { useContext } from 'react';
 
 const carDetails = () => {
+    const contextData = useContext(context);
+
+    if (!contextData || !contextData.handleSignUp) {
+        return <LoadingSpinner></LoadingSpinner>;
+    }
+    const { user } = contextData || {};
+
     const { id } = useParams();
     const [car, setCar] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -41,44 +50,53 @@ const carDetails = () => {
 
     // send updated booked data to the server
     const handleBooking = () => {
-        fetch(`${import.meta.env.VITE_API_URL}/bookCar/${car._id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                startDate,
-                endDate,
-                totalCost,
-                bookingStatus: 'booked',
-            })
+        const bookingData = {
+            userEmail: contextData?.user?.email,
+            carId: car._id,
+            carModel: car.carModel,
+            carImage: car.imageUrl,
+            location: car.location,
+            rentalPrice: car.rentalPrice,
+            startDate,
+            endDate,
+            totalCost,
+            bookingStatus: 'booked',
+            createdAt: new Date().toISOString()
+        };
+
+        // send booking data to the server
+        fetch(`${import.meta.env.VITE_API_URL}/bookings`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookingData)
         })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    // 2. Update car booking count
+                    return fetch(`${import.meta.env.VITE_API_URL}/bookCar/${car._id}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({})
+                    });
+                }
+            })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
                     toast.success('Car booked successfully!');
                     setCar(prev => ({
                         ...prev,
-                        bookingCount: prev.bookingCount + 1,
-                        startDate,
-                        endDate,
-                        totalCost,
-                        bookingStatus: 'booked',
+                        bookingCount: prev.bookingCount + 1
                     }));
-                } else {
-                    toast.error('Booking failed!');
                 }
                 setShowModal(false);
                 setStartDate('');
                 setEndDate('');
                 setTotalCost(0);
             })
-            .catch(error => {
-                console.error('Booking error:', error);
-                toast.error('Booking failed!');
-                setShowModal(false);
-            });
     };
+
 
     if (loading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -121,6 +139,7 @@ const carDetails = () => {
                                     <label className="block">
                                         <span>Start Date:</span>
                                         <input
+                                            required
                                             type="date"
                                             className="input input-bordered w-full"
                                             value={startDate}
@@ -131,6 +150,7 @@ const carDetails = () => {
                                     <label className="block">
                                         <span>End Date:</span>
                                         <input
+                                            required
                                             type="date"
                                             className="input input-bordered w-full"
                                             value={endDate}
