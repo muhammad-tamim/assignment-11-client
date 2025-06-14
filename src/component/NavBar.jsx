@@ -16,7 +16,7 @@ const Navbar = () => {
         handleSignOut()
     }
     return (
-        <div className="max-w-screen-2xl mx-auto navbar px-4 lg:px-10 shadow">
+        <div className="max-w-screen-2xl mx-auto navbar px-4 lg:px-10">
             <div className="navbar-start">
                 {/* Drop Down For Small Devices */}
                 <div className="dropdown">
