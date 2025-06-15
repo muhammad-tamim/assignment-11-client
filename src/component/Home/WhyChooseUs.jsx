@@ -9,7 +9,7 @@ const WhyChooseUs = () => {
         <div className='max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
             <h1 className='text-center text-4xl mb-10'>Why Choose Us?</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-20 '>
-                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800" bis_skin_checked="1">
+                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300" bis_skin_checked="1">
                     <div className='flex flex-col items-center justify-center w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square'>
                         <IoCarSportSharp className='text-8xl' />
                     </div>
@@ -20,7 +20,7 @@ const WhyChooseUs = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800" bis_skin_checked="1">
+                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300" bis_skin_checked="1">
                     <div className='flex flex-col items-center justify-center w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square'>
                         <GiTakeMyMoney className='text-8xl' />
                     </div>
@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800" bis_skin_checked="1">
+                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300" bis_skin_checked="1">
                     <div className='flex flex-col items-center justify-center w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square'>
                         <FaCalendarCheck className='text-8xl' />
                     </div>
@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800" bis_skin_checked="1">
+                <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300" bis_skin_checked="1">
                     <div className='flex flex-col items-center justify-center w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square'>
                         <MdOutlineSupportAgent className='text-8xl' />
                     </div>
