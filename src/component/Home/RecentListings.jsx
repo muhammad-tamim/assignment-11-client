@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import LoadingSpinner from '../LoadingSpinner';
 import { formatDistanceToNow } from 'date-fns';
+import RecentListingsCard from './RecentListingsCard';
 
 const RecentListings = () => {
     const [cars, setCars] = useState([]);
@@ -30,27 +31,7 @@ const RecentListings = () => {
             <h1 className='text-center text-4xl mb-10'>Recent Listings</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-20'>
 
-                {cars.map((car) => (
-                    <div
-                        key={car._id}
-                        className='dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-md p-4 hover:shadow-xl hover:scale-105 transition duration-300'
-                    >
-                        <img src={car.imageUrl} alt={car.carModel} className='w-full h-48 rounded mb-4' />
-                        <h2 className='text-xl font-semibold'>{car.carModel}</h2>
-                        <p className='text-gray-600'>Rental Price: {car.rentalPrice}/day</p>
-                        <p>
-                            Availability:{' '}
-                            <span
-                                className={`font-medium ${car.availability === 'Available' ? 'text-green-600' : 'text-red-600'
-                                    }`}
-                            >
-                                {car.availability}
-                            </span>
-                        </p>
-                        <p>Booking Count: {car.bookingCount}</p>
-                        <p className='text-sm text-gray-500'>{getTimeAgo(car.postedDate)}</p>
-                    </div>
-                ))}
+                {cars.map((car) => <RecentListingsCard car={car} getTimeAgo={getTimeAgo} key={car._id}></RecentListingsCard>)}
 
             </div>
         </div>
