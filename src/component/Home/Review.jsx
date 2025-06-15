@@ -6,7 +6,7 @@ const Review = () => {
             <h1 className='text-center text-4xl mb-10'>Our Customers Reviews</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-20'>
 
-                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800">
+                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300">
                     <div className="flex justify-between p-4">
                         <div className="flex space-x-4">
                             <div>
@@ -24,7 +24,7 @@ const Review = () => {
                     </div>
                 </div>
 
-                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800">
+                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300">
                     <div className="flex justify-between p-4">
                         <div className="flex space-x-4">
                             <div>
@@ -42,7 +42,7 @@ const Review = () => {
                     </div>
                 </div>
 
-                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800">
+                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300">
                     <div className="flex justify-between p-4">
                         <div className="flex space-x-4">
                             <div>
@@ -60,7 +60,7 @@ const Review = () => {
                     </div>
                 </div>
 
-                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800">
+                <div className="shadow-md container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-xl dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl hover:scale-105 transition duration-300">
                     <div className="flex justify-between p-4">
                         <div className="flex space-x-4">
                             <div>
