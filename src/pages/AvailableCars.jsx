@@ -92,7 +92,7 @@ const AvailableCars = () => {
                             <img src={car.imageUrl} alt={car.carModel} className='w-full h-48 object-cover rounded mb-4' />
                             <h2 className='text-xl font-bold mb-1'>{car.carModel}</h2>
                             <p className=' mb-1'>${car.rentalPrice}/day</p>
-                            <p className=' mb-1'>Location: {car.Location}</p>
+                            <p className=' mb-1'>Location: {car.location}</p>
                             <p className=' mb-1'>Booking Count: {car.bookingCount}</p>
                             <p className='text-sm  mb-2'>
                                 Posted: {new Date(car.postedDate).toLocaleDateString()}
