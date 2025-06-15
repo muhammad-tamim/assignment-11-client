@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import LoadingSpinner from '../LoadingSpinner';
+import { formatDistanceToNow } from 'date-fns';
 
 const RecentListings = () => {
     const [cars, setCars] = useState([]);
@@ -18,32 +19,10 @@ const RecentListings = () => {
             });
     }, []);
 
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center h-64">
-                <LoadingSpinner></LoadingSpinner>
-            </div>
-        );
-    }
+    if (loading) return <LoadingSpinner></LoadingSpinner>
 
     const getTimeAgo = (date) => {
-        const posted = new Date(date);
-        const now = new Date();
-
-        const diffMs = now - posted;
-        const diffSeconds = Math.floor(diffMs / 1000);
-        const diffMinutes = Math.floor(diffSeconds / 60);
-        const diffHours = Math.floor(diffMinutes / 60);
-        const diffDays = Math.floor(diffHours / 24);
-        const diffMonths = Math.floor(diffDays / 30);
-        const diffYears = Math.floor(diffDays / 365);
-
-        if (diffYears > 0) return `Added ${diffYears} year${diffYears > 1 ? 's' : ''} ago`;
-        if (diffMonths > 0) return `Added ${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
-        if (diffDays > 0) return `Added ${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
-        if (diffHours > 0) return `Added ${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
-        if (diffMinutes > 0) return `Added ${diffMinutes} minute${diffMinutes > 1 ? 's' : ''} ago`;
-        return "Added just now";
+        return `Added ${formatDistanceToNow(new Date(date), { addSuffix: true })}`;
     };
 
     return (
@@ -58,7 +37,7 @@ const RecentListings = () => {
                     >
                         <img src={car.imageUrl} alt={car.carModel} className='w-full h-48 rounded mb-4' />
                         <h2 className='text-xl font-semibold'>{car.carModel}</h2>
-                        <p className='text-gray-600'>${car.rentalPrice}/day</p>
+                        <p className='text-gray-600'>Rental Price: {car.rentalPrice}/day</p>
                         <p>
                             Availability:{' '}
                             <span
