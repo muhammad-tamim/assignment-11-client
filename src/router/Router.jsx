@@ -40,9 +40,11 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/carDetails/:id',
-                Component: carDetails,
-                // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/carDetails/${params.id}`),
-                // hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>
+                element: (
+                    <PrivateRouter>
+                        <carDetails></carDetails>
+                    </PrivateRouter>
+                )
             },
             {
                 path: '/AddCar',
