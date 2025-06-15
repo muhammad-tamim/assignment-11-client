@@ -5,7 +5,7 @@ import logo from '../assets/logo.png'
 
 const Footer = () => {
     return (
-        <footer className="max-w-screen-2xl mx-auto footer shadow footer-horizontal footer-center p-10 ">
+        <footer className="max-w-screen-2xl mx-auto footer  footer-horizontal md:footer-vertical footer-center p-10 border-t border-primary">
             <div>
                 <Link to="/" className='cursor-pointer flex items-center gap-1 text-2xl xl:text-4xl'><img src={logo} alt="Logo" /></Link>
                 <p>Copyright © {new Date().getFullYear()} - All right reserved by Rapid Ride Ltd</p>
