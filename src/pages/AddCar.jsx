@@ -18,7 +18,6 @@ const AddCar = () => {
         const formData = new FormData(form);
         const carData = Object.fromEntries(formData.entries());
         carData.bookingCount = 0;
-        carData.bookingCount = Number(carData.bookingCount) || 0;
         carData.userEmail = user?.email;
         carData.postedDate = new Date().toISOString()
         carData.bookingStatus = 'not_booked';
