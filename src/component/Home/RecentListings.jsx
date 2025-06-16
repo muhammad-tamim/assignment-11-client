@@ -14,8 +14,7 @@ const RecentListings = () => {
         fetch(`${import.meta.env.VITE_API_URL}/cars`)
             .then((res) => res.json())
             .then((data) => {
-                const sorted = data.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
-                setCars(sorted.slice(0, 6));
+                setCars(data);
                 setLoading(false);
             });
     }, []);
