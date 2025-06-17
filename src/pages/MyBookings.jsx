@@ -21,7 +21,12 @@ const MyBookings = () => {
     useEffect(() => {
         setLoading(true);
         if (user?.email) {
-            fetch(`${import.meta.env.VITE_API_URL}/bookings/email/${user.email}`)
+            fetch(`${import.meta.env.VITE_API_URL}/bookings/email/${user.email}`, {
+                credentials: 'include',
+                headers: {
+                    authorization: `Bearer ${user.accessToken}`
+                }
+            })
                 .then((res) => res.json())
                 .then((data) => {
                     setBookings(data)

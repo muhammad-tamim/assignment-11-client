@@ -6,6 +6,7 @@ import Navbar from '../component/Navbar';
 import { auth } from '../firebase/firebase.config';
 import { provider } from '../firebase/GoogleAuthProvider';
 import Footer from '../component/Footer';
+import axios from 'axios';
 
 export const context = createContext();
 
@@ -20,6 +21,15 @@ const RootLayout = () => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
+            if (currentUser?.email) {
+                const userData = { email: currentUser.email }
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, userData, {
+                    withCredentials: true
+                })
+                    .then(res => console.log(res.data))
+                    .catch(error => console.log(error))
+            }
+            console.log("user int he rootLayout", currentUser)
         })
         return () => unsubscribe()
     }, [])

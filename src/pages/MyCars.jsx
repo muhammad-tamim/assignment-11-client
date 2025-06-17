@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { context } from '../layout/RootLayout';
@@ -20,7 +20,12 @@ const MyCars = () => {
     useEffect(() => {
         setLoading(true);
         if (user?.email) {
-            fetch(`${import.meta.env.VITE_API_URL}/myCars/email/${user.email}`)
+            fetch(`${import.meta.env.VITE_API_URL}/myCars/email/${user.email}`, {
+                credentials: 'include',
+                headers: {
+                    authorization: `Bearer ${user.accessToken}`
+                }
+            })
                 .then((res) => res.json())
                 .then((data) => {
                     setMyCars(data)
