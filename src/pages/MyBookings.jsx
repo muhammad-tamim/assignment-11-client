@@ -194,6 +194,15 @@ const MyBookings = () => {
                                     onChange={(e) => setEndDate(e.target.value)}
                                 />
                             </div>
+                            <div className="font-medium">
+                                {(() => {
+                                    const start = new Date(startDate);
+                                    const end = new Date(endDate);
+                                    const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                                    const price = days > 0 ? days * editingBooking.rentalPrice : editingBooking.totalCost;
+                                    return `Price: $${price}`;
+                                })()}
+                            </div>
                             <div className="modal-action">
                                 <button className="btn" onClick={() => setEditingBooking(null)}>Cancel</button>
                                 <button
