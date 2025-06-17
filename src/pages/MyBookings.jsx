@@ -41,8 +41,8 @@ const MyBookings = () => {
             title: 'Are you sure you want to cancel this booking?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, cancel it!',
-            cancelButtonText: 'No',
+            confirmButtonText: 'Yes executing the cancellation ',
+            cancelButtonText: 'No closing the modal',
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
         }).then((result) => {
@@ -118,10 +118,10 @@ const MyBookings = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {bookings.map((b, index) => (
+                            {bookings.map((b) => (
                                 <tr
                                     key={b._id}
-                                    className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50 hover:bg-gray-100'}
+                                    className="bg-white hover:bg-gray-100 transition duration-200"
                                 >
                                     <td>
                                         <img src={b.carImage} alt="car" className="w-16 h-16 rounded object-cover" />

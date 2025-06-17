@@ -68,7 +68,7 @@ const MyCars = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        if (data.deletedCount > 0) {
+                        if (data.deletedCarCount > 0) {
                             setMyCars(prev => prev.filter(car => car._id !== id));
                             Swal.fire({
                                 title: 'Deleted!',
