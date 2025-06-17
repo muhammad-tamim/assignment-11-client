@@ -25,14 +25,11 @@ const AddCar = () => {
 
         // Send data to server
         fetch(`${import.meta.env.VITE_API_URL}/addCar`, {
+            method: "POST",
             credentials: 'include',
             headers: {
-                authorization: `Bearer ${user.accessToken}`
-            }
-        }, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.accessToken}`
             },
             body: JSON.stringify(carData)
         })

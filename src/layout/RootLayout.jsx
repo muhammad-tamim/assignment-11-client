@@ -26,10 +26,10 @@ const RootLayout = () => {
                 axios.post(`${import.meta.env.VITE_API_URL}/jwt`, userData, {
                     withCredentials: true
                 })
-                    .then(res => console.log(res.data))
-                    .catch(error => console.log(error))
+                // .then(res => console.log(res.data))
+                // .catch(error => console.log(error))
             }
-            console.log("user int he rootLayout", currentUser)
+            // console.log("user int he rootLayout", currentUser)
         })
         return () => unsubscribe()
     }, [])
