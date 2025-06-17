@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import LoadingSpinner from '../component/LoadingSpinner';
 import { Link } from 'react-router';
+import AvailableCarsGridView from '../component/AvailableCarsGridView';
+import AvailableCarsTableView from '../component/AvailableCarsTableView';
 
 const AvailableCars = () => {
     const [cars, setCars] = useState([]);
@@ -20,10 +22,6 @@ const AvailableCars = () => {
                 setLoading(false);
             });
     }, []);
-
-    if (loading) {
-        return <LoadingSpinner></LoadingSpinner>
-    }
 
     // searching
     const filteredCars = cars.filter((car) => {
@@ -48,6 +46,8 @@ const AvailableCars = () => {
         }
         return 0;
     });
+
+    if (loading) return <LoadingSpinner></LoadingSpinner>
     return (
         <div className='max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
             <h1 className='text-center text-4xl mb-10'>Available Cars</h1>
@@ -85,46 +85,11 @@ const AvailableCars = () => {
 
             {isGridView ? (
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8'>
-                    {sortedCars.map((car) => (
-                        <div
-                            key={car._id}
-                            className='dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-md p-4 hover:shadow-xl transition duration-300'>
-                            <img src={car.imageUrl} alt={car.carModel} className='w-full h-48 object-cover rounded mb-4' />
-                            <h2 className='text-xl font-bold mb-1'>{car.carModel}</h2>
-                            <p className=' mb-1'>${car.rentalPrice}/day</p>
-                            <p className=' mb-1'>Location: {car.location}</p>
-                            <p className=' mb-1'>Booking Count: {car.bookingCount}</p>
-                            <p className='text-sm  mb-2'>
-                                Posted: {new Date(car.postedDate).toLocaleDateString()}
-                            </p>
-                            <Link to={`/carDetails/${car._id}`} className='btn btn-sm btn-outline btn-primary'>
-                                Book Now
-                            </Link>
-                        </div>
-                    ))}
+                    {sortedCars.map(car => <AvailableCarsGridView key={car._id} car={car}></AvailableCarsGridView>)}
                 </div>
             ) : (
                 <div className='space-y-4'>
-                    {sortedCars.map((car) => (
-                        <div
-                            key={car._id}
-                            className='flex flex-col md:flex-row items-center gap-4 bg-white dark:bg-gray-100 rounded-lg shadow-md p-4'
-                        >
-                            <img src={car.imageUrl} alt={car.carModel} className='w-full md:w-40 h-32 object-cover rounded' />
-                            <div className='flex-1'>
-                                <h2 className='text-xl font-bold mb-1'>{car.carModel}</h2>
-                                <p className=' mb-1'>${car.rentalPrice}/day</p>
-                                <p className=' mb-1'>Location: {car.Location}</p>
-                                <p className=' mb-1'>Booking Count: {car.bookingCount}</p>
-                                <p className='text-sm '>
-                                    Posted: {new Date(car.postedDate).toLocaleDateString()}
-                                </p>
-                            </div>
-                            <Link to={`/carDetails/${car._id}`} className='btn btn-sm btn-outline btn-primary'>
-                                Book Now
-                            </Link>
-                        </div>
-                    ))}
+                    {sortedCars.map((car) => <AvailableCarsTableView key={car._id} car={car}></AvailableCarsTableView>)}
                 </div>
             )}
         </div>
