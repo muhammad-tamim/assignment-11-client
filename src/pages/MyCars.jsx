@@ -7,6 +7,7 @@ import LoadingSpinner from '../component/LoadingSpinner';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router';
+import MyCarsTD from '../component/Home/MyCarsTD';
 
 const MyCars = () => {
     const { user } = useContext(context);
@@ -28,12 +29,6 @@ const MyCars = () => {
         }
     }, [user]);
 
-    if (loading) {
-        return (
-            <LoadingSpinner></LoadingSpinner>
-        );
-    }
-
     // update my cars data and send them in the server
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -49,12 +44,9 @@ const MyCars = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    setMyCars(prev => prev.map(car =>
-                        car._id === selectedCar._id ? { ...car, ...updatedCar } : car
-                    ));
+                    setMyCars(prev => prev.map(car => car._id === selectedCar._id ? { ...car, ...updatedCar } : car));
                     setIsModalOpen(false)
                     toast.success('Update car data Successfully');
-
                 }
             });
     };
@@ -106,6 +98,7 @@ const MyCars = () => {
         setMyCars(sorted);
     };
 
+    if (loading) return <LoadingSpinner></LoadingSpinner>
 
     return (
         <>
@@ -136,7 +129,7 @@ const MyCars = () => {
                         <p className="mb-6">
                             It looks like you haven’t added any cars yet. Click the button below to add cars.
                         </p>
-                        <Link href="/addCar" className="btn btn-primary">
+                        <Link to="/addCar" className="btn btn-primary">
                             Add Car
                         </Link>
                     </div>
@@ -160,100 +153,12 @@ const MyCars = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {myCars.map(car => (
-                                        <tr key={car._id}>
-                                            <td><img src={car.imageUrl} alt={car.model} className='w-16 h-16 rounded' /></td>
-                                            <td>{car.carModel}</td>
-                                            <td>${car.rentalPrice}</td>
-                                            <td>{car.bookingCount || 0}</td>
-                                            <td>{car.availability}</td>
-                                            <td>{new Date(car.postedDate).toLocaleDateString()}</td>
-                                            <td className='mt-5 flex gap-2'>
-                                                <button className='btn btn-xs btn-success mr-2' onClick={() => { setSelectedCar(car); setIsModalOpen(true); }}>Update</button>
-                                                <button className='btn btn-xs btn-error' onClick={() => handleDelete(car._id)}>Delete</button>
-                                            </td>
-                                        </tr>
-                                    ))}
+                                    {myCars.map(car => <MyCarsTD key={car._id} car={car} setSelectedCar={setSelectedCar} selectedCar={selectedCar} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} handleDelete={handleDelete} handleUpdate={handleUpdate}></MyCarsTD>)}
                                 </tbody>
                             </table>
                         </div>
                     </>
                 )}
-
-
-                {/* myCars data update modal */}
-                {isModalOpen && selectedCar && (
-                    <dialog open className="modal">
-                        <form method="dialog" onSubmit={handleUpdate} className="modal-box max-w-2xl w-full">
-                            <h3 className="font-bold text-center text-xl mb-4">Update Car</h3>
-
-                            {/* Car Model */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Car Model</label>
-                                <input type="text" name="carModel" defaultValue={selectedCar.carModel} className="w-full input input-bordered" required />
-                            </div>
-
-                            {/* Daily Rental Price */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Daily Rental Price ($)</label>
-                                <input type="number" name="rentalPrice" defaultValue={selectedCar.rentalPrice || selectedCar.dailyPrice} className="w-full input input-bordered" required />
-                            </div>
-
-                            {/* Availability */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Availability</label>
-                                <select name="availability" defaultValue={selectedCar.availability} className="w-full select select-bordered" required>
-                                    <option value="">Select availability</option>
-                                    <option value="Available">Available</option>
-                                    <option value="Unavailable">Unavailable</option>
-                                </select>
-                            </div>
-
-                            {/* Vehicle Registration Number */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Vehicle Registration Number</label>
-                                <input type="text" name="registrationNumber" defaultValue={selectedCar.registrationNumber || selectedCar.registration} className="w-full input input-bordered" required />
-                            </div>
-
-                            {/* Features */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Features</label>
-                                <input type="text" name="features" defaultValue={selectedCar.features} className="w-full input input-bordered" placeholder="GPS, AC, Bluetooth..." />
-                            </div>
-
-                            {/* Description */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Description</label>
-                                <textarea name="description" defaultValue={selectedCar.description} rows="3" className="w-full textarea textarea-bordered" required></textarea>
-                            </div>
-
-                            {/* Booking Count */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Booking Count</label>
-                                <input type="number" name="bookingCount" defaultValue={selectedCar.bookingCount || 0} className="w-full input input-bordered" readOnly />
-                            </div>
-
-                            {/* Image URL */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Image URL</label>
-                                <input type="url" name="imageUrl" defaultValue={selectedCar.imageUrl || selectedCar.image} className="w-full input input-bordered" required />
-                            </div>
-
-                            {/* Location */}
-                            <div className="mb-3">
-                                <label className="block mb-1 font-medium">Location</label>
-                                <input type="text" name="location" defaultValue={selectedCar.location} className="w-full input input-bordered" required />
-                            </div>
-
-                            {/* Buttons */}
-                            <div className="modal-action">
-                                <button type="submit" className="btn btn-success">Update</button>
-                                <button type="button" onClick={() => setIsModalOpen(false)} className="btn">Cancel</button>
-                            </div>
-                        </form>
-                    </dialog>
-                )}
-
 
             </div>
         </>
