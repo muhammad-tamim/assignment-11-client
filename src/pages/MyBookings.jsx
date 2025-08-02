@@ -112,7 +112,7 @@ const MyBookings = () => {
 
                 <div className="overflow-x-auto border rounded shadow">
                     <table className="table w-full text-sm">
-                        <thead className="bg-gray-300 text-gray-700 font-semibold">
+                        <thead className="bg-gray-100 text-gray-700 font-semibold">
                             <tr>
                                 <th>Car Image</th>
                                 <th>Car Model</th>
@@ -126,7 +126,7 @@ const MyBookings = () => {
                             {bookings.map((b) => (
                                 <tr
                                     key={b._id}
-                                    className="dark:bg-gray-50 dark:text-gray-800 hover:bg-gray-300 transition duration-200"
+                                    className="bg-white hover:bg-gray-100 transition duration-200"
                                 >
                                     <td>
                                         <img src={b.carImage} alt="car" className="w-16 h-16 rounded object-cover" />
