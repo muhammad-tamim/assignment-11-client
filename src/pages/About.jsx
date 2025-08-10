@@ -148,47 +148,6 @@ const About = () => {
 
 
 
-            {/* Statistics */}
-            <section
-                ref={ref}
-                className="p-6 bg-gray-100 dark:bg-gray-800 dark:text-gray-100 rounded-3xl mb-24 max-w-6xl mx-auto"
-            >
-                <div className="grid justify-center grid-cols-2 gap-6 text-center lg:grid-cols-3">
-                    <div className="flex flex-col justify-center m-2">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">
-                            {inView ? <CountUp end={1200} duration={2} separator="," /> : "0"}+
-                        </p>
-                        <p className="text-sm sm:text-base">Happy Customers</p>
-                    </div>
-                    <div className="flex flex-col justify-center m-2">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">
-                            {inView ? <CountUp end={500} duration={2} separator="," /> : "0"}+
-                        </p>
-                        <p className="text-sm sm:text-base">Cars Available</p>
-                    </div>
-                    <div className="flex flex-col justify-center m-2">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">
-                            {inView ? <CountUp end={10000} duration={2} separator="," /> : "0"}+
-                        </p>
-                        <p className="text-sm sm:text-base">Bookings Completed</p>
-                    </div>
-                    <div className="flex flex-col justify-center m-2">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">4.9/5</p>
-                        <p className="text-sm sm:text-base">Average Customer Rating</p>
-                    </div>
-                    <div className="flex flex-col justify-center m-2">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">
-                            {inView ? <CountUp end={8} duration={2} /> : "0"}
-                        </p>
-                        <p className="text-sm sm:text-base">Years in Business</p>
-                    </div>
-                    <div className="flex flex-col justify-center m-2">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">24/7</p>
-                        <p className="text-sm sm:text-base">Customer Support</p>
-                    </div>
-                </div>
-            </section>
-
             {/* Call to Action */}
             <div className="text-center">
                 <a href="/AvailableCars" className="btn btn-primary lg:btn-xl">
