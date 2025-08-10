@@ -40,10 +40,6 @@ const Router = createBrowserRouter([
                 Component: AvailableCars
             },
             {
-                path: '/blogs',
-                Component: Blog
-            },
-            {
                 path: '/carDetails/:id',
                 Component: carDetails,
             },
