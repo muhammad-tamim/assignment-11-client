@@ -1,6 +1,7 @@
 import React from 'react';
 import SpecialOffersCard from './SpecialOffersCard';
 import { Slide } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 
 const SpecialOffers = () => {
     const offers = [
@@ -30,16 +31,15 @@ const SpecialOffers = () => {
         },
     ];
     return (
-        <>
-            <Slide>
-                <div className='max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
-                    <h1 className='text-center text-4xl font-bold mb-10'>Special Offers</h1>
-                    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10'>
-                        {offers.map((offer, index) => <SpecialOffersCard key={index} offer={offer} index={index}></SpecialOffersCard>)}
-                    </div>
+
+        <Fade>
+            <div className='max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
+                <h1 className='text-center text-4xl font-bold mb-10'>Special Offers</h1>
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10'>
+                    {offers.map((offer, index) => <SpecialOffersCard key={index} offer={offer} index={index}></SpecialOffersCard>)}
                 </div>
-            </Slide>
-        </>
+            </div>
+        </Fade>
     );
 };
 
