@@ -1,9 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router';
 
 const RecentListingsCard = ({ car }) => {
     const { _id, imageUrl, carModel, description } = car;
-    const navigate = useNavigate();
 
     const shortDescription = description
         ? description.length > 70
@@ -23,13 +22,9 @@ const RecentListingsCard = ({ car }) => {
             <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
                 {shortDescription}
             </p>
-            <button
-                onClick={() => navigate(`/carDetails/${_id}`)}
-                className="w-full bg-primary hover:bg-primary-focus text-white py-2 rounded-md text-sm font-medium transition-colors"
-                aria-label={`See more details about ${carModel}`}
-            >
+            <Link to={`/carDetails/${car._id}`} className='btn btn-primary btn-sm' aria-label={`See more details about ${carModel}`}>
                 See More
-            </button>
+            </Link>
         </div>
     );
 };

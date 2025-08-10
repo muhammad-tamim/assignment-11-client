@@ -2,20 +2,32 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const AvailableCarsGridView = ({ car }) => {
+    const { _id, imageUrl, carModel, description } = car;
+
+    const shortDescription = description
+        ? description.length > 70
+            ? description.slice(0, 70) + '...'
+            : description
+        : 'No description available.';
+
     return (
-        <div className='dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-md p-4 hover:shadow-xl transition duration-300'>
-            <img src={car.imageUrl} alt={car.carModel} className='w-full h-48 object-cover rounded mb-4' />
-            <h2 className='text-xl font-bold mb-1'>{car.carModel}</h2>
-            <p className=' mb-1'>${car.rentalPrice}/day</p>
-            <p className=' mb-1'>Location: {car.location}</p>
-            <p className=' mb-1'>Booking Count: {car.bookingCount}</p>
-            <p className='text-sm  mb-2'>
-                Posted: {new Date(car.postedDate).toLocaleDateString()}
-            </p>
-            <Link to={`/carDetails/${car._id}`} className='btn btn-sm btn-primary'>
-                Book Now
-            </Link>
-        </div>
+        <>
+            <div className="dark:bg-white dark:text-gray-900 rounded-lg shadow-md p-4 max-w-xs mx-auto hover:shadow-lg hover:scale-[1.03] transition-transform duration-300 ease-in-out cursor-pointer">
+                <img
+                    src={imageUrl}
+                    alt={carModel}
+                    className="w-full h-40 object-cover rounded-md mb-3"
+                    loading="lazy"
+                />
+                <h2 className="text-lg font-semibold mb-1 truncate">{carModel}</h2>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                    {shortDescription}
+                </p>
+                <Link to={`/carDetails/${car._id}`} className='btn btn-primary btn-sm' aria-label={`See more details about ${carModel}`}>
+                    See More
+                </Link>
+            </div>
+        </>
     );
 };
 

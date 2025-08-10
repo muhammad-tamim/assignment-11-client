@@ -49,9 +49,8 @@ const AvailableCars = () => {
 
     if (loading) return <LoadingSpinner></LoadingSpinner>
     return (
-        <div className='max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
-            <h1 className='text-center text-4xl mb-10'>Available Cars</h1>
-
+        <div className='max-w-[1920px] mx-auto px-4 lg:px-10 my-20 mt-40'>
+            <h1 className='text-center text-4xl font-bold mb-10'>Available Cars</h1>
             <div className='flex flex-col lg:flex-row justify-between items-center gap-4 mb-8'>
                 <input
                     type='text'
@@ -84,7 +83,7 @@ const AvailableCars = () => {
 
 
             {isGridView ? (
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8'>
                     {sortedCars.map(car => <AvailableCarsGridView key={car._id} car={car}></AvailableCarsGridView>)}
                 </div>
             ) : (
