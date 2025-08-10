@@ -3,22 +3,24 @@ import { Link } from 'react-router';
 
 const AvailableCarsTableView = ({ car }) => {
     return (
-        <div className='flex flex-col md:flex-row items-center gap-4 bg-white dark:bg-gray-100 rounded-lg shadow-md p-4'
-        >
-            <img src={car.imageUrl} alt={car.carModel} className='w-full md:w-40 h-32 object-cover rounded' />
-            <div className='flex-1'>
-                <h2 className='text-xl font-bold mb-1'>{car.carModel}</h2>
-                <p className=' mb-1'>${car.rentalPrice}/day</p>
-                <p className=' mb-1'>Location: {car.Location}</p>
-                <p className=' mb-1'>Booking Count: {car.bookingCount}</p>
-                <p className='text-sm '>
-                    Posted: {new Date(car.postedDate).toLocaleDateString()}
-                </p>
-            </div>
-            <Link to={`/carDetails/${car._id}`} className='btn btn-sm btn-primary'>
-                Book Now
-            </Link>
-        </div>
+        <tr className="bg-white dark:bg-gray-100 hover:bg-gray-50 dark:hover:bg-gray-200">
+            <td className="p-2">
+                <img
+                    src={car.imageUrl}
+                    alt={car.carModel}
+                    className="w-24 h-16 object-cover rounded"
+                />
+            </td>
+            <td className="p-2 font-semibold">{car.carModel}</td>
+            <td className="p-2 text-gray-600 dark:text-gray-700 truncate max-w-xs">
+                {car.description ? car.description.substring(0, 60) + '...' : 'No description'}
+            </td>
+            <td className="p-2">
+                <Link to={`/carDetails/${car._id}`} className="btn btn-sm btn-primary">
+                    Book Now
+                </Link>
+            </td>
+        </tr>
     );
 };
 

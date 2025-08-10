@@ -87,8 +87,22 @@ const AvailableCars = () => {
                     {sortedCars.map(car => <AvailableCarsGridView key={car._id} car={car}></AvailableCarsGridView>)}
                 </div>
             ) : (
-                <div className='space-y-4'>
-                    {sortedCars.map((car) => <AvailableCarsTableView key={car._id} car={car}></AvailableCarsTableView>)}
+                <div className="overflow-x-auto">
+                    <table className="table-auto w-full border-collapse dark:border-gray-600">
+                        <thead className="bg-gray-200 dark:bg-gray-700">
+                            <tr>
+                                <th className="p-3 dark:border-gray-600 text-left">Image</th>
+                                <th className="p-3 dark:border-gray-600 text-left">Model</th>
+                                <th className="p-3 dark:border-gray-600 text-left">Description</th>
+                                <th className="p-3 dark:border-gray-600 text-left">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sortedCars.map((car) => (
+                                <AvailableCarsTableView key={car._id} car={car} />
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             )}
         </div>
