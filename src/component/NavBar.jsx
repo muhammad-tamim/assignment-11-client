@@ -1,20 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.png';
 import { context } from '../layout/RootLayout';
 import LoadingSpinner from './LoadingSpinner';
 
 const Navbar = () => {
     const contextData = useContext(context);
 
+    const [theme, setTheme] = useState('light');
+
+    // Apply theme to <html>
+    useEffect(() => {
+        document.querySelector('html').setAttribute('data-theme', theme);
+    }, [theme]);
+
     if (!contextData || !contextData.handleSignUp) {
-        return <LoadingSpinner></LoadingSpinner>;
+        return <LoadingSpinner />;
     }
     const { user, handleSignOut } = contextData || {};
 
     const handleSubmit = () => {
-        handleSignOut()
-    }
+        handleSignOut();
+    };
+
+    const handleThemeToggle = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    };
 
     return (
         <div className="px-4 lg:px-10 navbar bg-base-100 border-b border-base-300 shadow-sm fixed top-0 left-0 right-0 z-50">
@@ -28,31 +39,18 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 z-1 mt-3 w-52 p-2 shadow text-primary">
-                        <li className='hover:text-primary'>
-                            <NavLink to="/" className={({ isActive }) => isActive ? "text-primary" : ''}>Home</NavLink>
-                        </li>
-                        <li className='hover:text-primary'>
-                            <NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink>
-                        </li>
-                        <li className='hover:text-primary'>
-                            <NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink>
-                        </li>
-                        {
-                            user && (
-                                <ul>
-                                    <li className='hover:text-primary'>
-                                        <NavLink to="/AddCar" className={({ isActive }) => isActive ? "text-primary" : ''}>Add Car</NavLink>
-                                    </li>
-                                    <li className='hover:text-primary'>
-                                        <NavLink to="/MyCars" className={({ isActive }) => isActive ? "text-primary" : ''}>My Cars</NavLink>
-                                    </li>
-                                    <li className='hover:text-primary'>
-                                        <NavLink to="/MyBookings" className={({ isActive }) => isActive ? "text-primary" : ''}>My Bookings</NavLink>
-                                    </li>
-                                </ul>
-                            )
-                        }
+                        className="menu menu-sm dropdown-content bg-base-100 z-1 mt-3 w-52 p-2 shadow"
+                    >
+                        <li><NavLink to="/" className={({ isActive }) => isActive ? "text-primary" : ''}>Home</NavLink></li>
+                        <li><NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink></li>
+                        <li><NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink></li>
+                        {user && (
+                            <>
+                                <li><NavLink to="/AddCar" className={({ isActive }) => isActive ? "text-primary" : ''}>Add Car</NavLink></li>
+                                <li><NavLink to="/MyCars" className={({ isActive }) => isActive ? "text-primary" : ''}>My Cars</NavLink></li>
+                                <li><NavLink to="/MyBookings" className={({ isActive }) => isActive ? "text-primary" : ''}>My Bookings</NavLink></li>
+                            </>
+                        )}
                     </ul>
                 </div>
                 {/* Logo */}
@@ -64,67 +62,45 @@ const Navbar = () => {
             {/* Navbar center links */}
             <div className="navbar-center hidden lg:flex xl:text-xl">
                 <ul className="flex gap-5 px-1">
-                    <li className='hover:text-primary'>
-                        <NavLink to="/" className={({ isActive }) => isActive ? "text-primary" : ''}>Home</NavLink>
-                    </li>
-                    <li className='hover:text-primary'>
-                        <NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink>
-                    </li>
-                    <li className='hover:text-primary'>
-                        <NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink>
-                    </li>
-                    {
-                        user && (
-                            <>
-                                <li className='hover:text-primary'>
-                                    <NavLink to="/AddCar" className={({ isActive }) => isActive ? "text-primary" : ''}>Add Car</NavLink>
-                                </li>
-                                <li className='hover:text-primary'>
-                                    <NavLink to="/MyCars" className={({ isActive }) => isActive ? "text-primary" : ''}>My Cars</NavLink>
-                                </li>
-                                <li className='hover:text-primary'>
-                                    <NavLink to="/MyBookings" className={({ isActive }) => isActive ? "text-primary" : ''}>My Bookings</NavLink>
-                                </li>
-                            </>
-                        )
-                    }
+                    <li><NavLink to="/" className={({ isActive }) => isActive ? "text-primary" : ''}>Home</NavLink></li>
+                    <li><NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink></li>
+                    <li><NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink></li>
+                    {user && (
+                        <>
+                            <li><NavLink to="/AddCar" className={({ isActive }) => isActive ? "text-primary" : ''}>Add Car</NavLink></li>
+                            <li><NavLink to="/MyCars" className={({ isActive }) => isActive ? "text-primary" : ''}>My Cars</NavLink></li>
+                            <li><NavLink to="/MyBookings" className={({ isActive }) => isActive ? "text-primary" : ''}>My Bookings</NavLink></li>
+                        </>
+                    )}
                 </ul>
             </div>
 
-            {/* Navbar end - moved SignIn/SignOut here */}
+            {/* Navbar end */}
             <div className="navbar-end gap-5 xl:text-xl">
-                {
-                    !user ? (
-                        <NavLink
-                            to="/signin"
-                            className={({ isActive }) => isActive ? "text-primary" : 'hover:text-primary'}
-                        >
-                            SignIn
-                        </NavLink>
-                    ) : (
-                        <a
-                            onClick={() => handleSubmit()}
-                            className="cursor-pointer hover:text-primary"
-                        >
-                            SignOut
-                        </a>
-                    )
-                }
+                {/* Theme toggle button */}
+                <button className="btn btn-ghost btn-circle" onClick={handleThemeToggle}>
+                    {theme === 'light' ? '🌙' : '☀️'}
+                </button>
 
-                {/* If logged in show profile info */}
-                {
-                    user &&
+                {!user ? (
+                    <NavLink to="/signin" className={({ isActive }) => isActive ? "text-primary" : 'hover:text-primary'}>
+                        SignIn
+                    </NavLink>
+                ) : (
+                    <a onClick={handleSubmit} className="cursor-pointer hover:text-primary">
+                        SignOut
+                    </a>
+                )}
+
+                {user && (
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img
-                                    alt=""
-                                    src={user?.photoURL}
-                                />
+                                <img alt="" src={user?.photoURL} />
                             </div>
                         </div>
                     </div>
-                }
+                )}
             </div>
         </div>
     );

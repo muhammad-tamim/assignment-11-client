@@ -57,12 +57,12 @@ const AvailableCars = () => {
                     placeholder='Search by model, brand, or location...'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className='input input-bordered w-full lg:max-w-sm'
+                    className='input input-bordered w-full lg:max-w-sm border-primary'
                 />
 
                 <div className='flex gap-4'>
                     <select
-                        className='select select-bordered'
+                        className='select select-bordered border-primary'
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
                     >
