@@ -12,6 +12,7 @@ import PrivateRouter from './PrivateRouter';
 import Home from '../pages/Home';
 import carDetails from '../pages/carDetails';
 import LoadingSpinner from '../component/LoadingSpinner';
+import Blog from '../pages/Blog';
 
 const Router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const Router = createBrowserRouter([
             {
                 path: '/AvailableCars',
                 Component: AvailableCars
+            },
+            {
+                path: '/blogs',
+                Component: Blog
             },
             {
                 path: '/carDetails/:id',
