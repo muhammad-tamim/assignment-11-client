@@ -12,7 +12,7 @@ const AvailableCarsGridView = ({ car }) => {
             <p className='text-sm  mb-2'>
                 Posted: {new Date(car.postedDate).toLocaleDateString()}
             </p>
-            <Link to={`/carDetails/${car._id}`} className='btn btn-sm btn-primary'>
+            <Link to={`/CarDetails/${car._id}`} className='btn btn-sm btn-primary'>
                 Book Now
             </Link>
         </div>
