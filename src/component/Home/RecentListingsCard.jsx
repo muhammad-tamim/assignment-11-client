@@ -1,23 +1,35 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
-const RecentListingsCard = ({ car, getTimeAgo }) => {
-    const { imageUrl, carModel, rentalPrice, availability, bookingCount, postedDate } = car;
+const RecentListingsCard = ({ car }) => {
+    const { _id, imageUrl, carModel, description } = car;
+    const navigate = useNavigate();
+
+    const shortDescription = description
+        ? description.length > 70
+            ? description.slice(0, 70) + '...'
+            : description
+        : 'No description available.';
+
     return (
-        <div className='dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-md p-4 hover:shadow-xl hover:scale-105 transition duration-300'>
-            <img src={imageUrl} alt={carModel} className='w-full rounded mb-4' />
-            <h2 className='text-xl font-semibold'>{carModel}</h2>
-            <p className='text-gray-600'>Rental Price: {rentalPrice}/day</p>
-            <p>
-                Availability:{' '}
-                <span
-                    className={`font-medium ${availability === 'Available' ? 'text-green-600' : 'text-red-600'
-                        }`}
-                >
-                    {availability}
-                </span>
+        <div className="dark:bg-white dark:text-gray-900 rounded-lg shadow-md p-4 max-w-xs mx-auto hover:shadow-lg hover:scale-[1.03] transition-transform duration-300 ease-in-out cursor-pointer">
+            <img
+                src={imageUrl}
+                alt={carModel}
+                className="w-full h-40 object-cover rounded-md mb-3"
+                loading="lazy"
+            />
+            <h2 className="text-lg font-semibold mb-1 truncate">{carModel}</h2>
+            <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                {shortDescription}
             </p>
-            <p>Booking Count: {bookingCount}</p>
-            <p className='text-sm text-gray-500'>{getTimeAgo(postedDate)}</p>
+            <button
+                onClick={() => navigate(`/carDetails/${_id}`)}
+                className="w-full bg-primary hover:bg-primary-focus text-white py-2 rounded-md text-sm font-medium transition-colors"
+                aria-label={`See more details about ${carModel}`}
+            >
+                See More
+            </button>
         </div>
     );
 };
