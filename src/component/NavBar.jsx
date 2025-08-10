@@ -17,7 +17,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="px-4 lg:px-10 navbar bg-base-100 border-b border-base-300 shadow-sm">
+        <div className="px-4 lg:px-10 navbar bg-base-100 border-b border-base-300 shadow-sm fixed top-0 left-0 right-0 z-50">
             <div className="navbar-start">
                 {/* Drop Down For Small Devices */}
                 <div className="dropdown">
