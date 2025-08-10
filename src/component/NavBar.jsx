@@ -36,7 +36,7 @@ const Navbar = () => {
                             <NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink>
                         </li>
                         <li className='hover:text-primary'>
-                            <NavLink to="/blogs" className={({ isActive }) => isActive ? "text-primary" : ''}>Blogs</NavLink>
+                            <NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink>
                         </li>
                         {
                             user && (
@@ -71,7 +71,7 @@ const Navbar = () => {
                         <NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink>
                     </li>
                     <li className='hover:text-primary'>
-                        <NavLink to="/blogs" className={({ isActive }) => isActive ? "text-primary" : ''}>Blogs</NavLink>
+                        <NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink>
                     </li>
                     {
                         user && (
