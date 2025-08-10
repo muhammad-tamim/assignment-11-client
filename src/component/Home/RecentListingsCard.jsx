@@ -24,7 +24,7 @@ const RecentListingsCard = ({ car }) => {
                 {shortDescription}
             </p>
             <button
-                onClick={() => navigate(`/CarDetails/${_id}`)}
+                onClick={() => navigate(`/carDetails/${_id}`)}
                 className="w-full bg-primary hover:bg-primary-focus text-white py-2 rounded-md text-sm font-medium transition-colors"
                 aria-label={`See more details about ${carModel}`}
             >

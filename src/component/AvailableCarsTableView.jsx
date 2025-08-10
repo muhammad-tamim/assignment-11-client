@@ -15,7 +15,7 @@ const AvailableCarsTableView = ({ car }) => {
                     Posted: {new Date(car.postedDate).toLocaleDateString()}
                 </p>
             </div>
-            <Link to={`/CarDetails/${car._id}`} className='btn btn-sm btn-primary'>
+            <Link to={`/carDetails/${car._id}`} className='btn btn-sm btn-primary'>
                 Book Now
             </Link>
         </div>

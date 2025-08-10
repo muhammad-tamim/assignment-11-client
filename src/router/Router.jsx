@@ -10,7 +10,7 @@ import MyBookings from '../pages/MyBookings';
 import ErrorPage from '../component/ErrorPage';
 import PrivateRouter from './PrivateRouter';
 import Home from '../pages/Home';
-import CarDetails from '../pages/CarDetails';
+import carDetails from '../pages/carDetails';
 import LoadingSpinner from '../component/LoadingSpinner';
 import About from '../pages/About';
 
@@ -44,8 +44,8 @@ const Router = createBrowserRouter([
                 Component: About
             },
             {
-                path: '/CarDetails/:id',
-                Component: CarDetails,
+                path: '/carDetails/:id',
+                Component: carDetails,
             },
             {
                 path: '/AddCar',
