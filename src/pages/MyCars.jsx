@@ -103,13 +103,19 @@ const MyCars = () => {
         setMyCars(sorted);
     };
 
-    if (loading) return <LoadingSpinner></LoadingSpinner>
+    if (loading)
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <LoadingSpinner />
+            </div>
+        );
+
 
     return (
         <>
             <Toaster position='top-right' />
 
-            <div className='max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
+            <div className='mt-40 max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
                 <h1 className='text-center text-4xl mb-10'>My Cars</h1>
 
                 <div className="flex justify-center md:justify-end mb-6">
@@ -140,7 +146,7 @@ const MyCars = () => {
                     </div>
                 ) : (
                     <>
-                        <p className="text-sm text-gray-500 italic text-center mb-2 lg:hidden">
+                        <p className="text-sm  italic text-center mb-2 lg:hidden">
                             Scroll left/right to view the full table:
                         </p>
 

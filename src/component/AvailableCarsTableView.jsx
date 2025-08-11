@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const AvailableCarsTableView = ({ car }) => {
     return (
         <tr
-            className="hover:border-b dark:hover:border-white"
+            className="border border-gray-200"
         >
             <td className="p-2">
                 <img

@@ -63,12 +63,12 @@ const AvailableCars = () => {
                     placeholder='Search by model, brand, or location...'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className='input input-bordered w-full lg:max-w-sm border-primary'
+                    className='input input-bordered w-full lg:max-w-sm border-gray-200 '
                 />
 
                 <div className='flex gap-4'>
                     <select
-                        className='select select-bordered border-primary'
+                        className='select select-bordered border-gray-200 '
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
                     >
@@ -93,9 +93,9 @@ const AvailableCars = () => {
                     {sortedCars.map(car => <AvailableCarsGridView key={car._id} car={car}></AvailableCarsGridView>)}
                 </div>
             ) : (
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto w-full rounded-md border border-gray-200">
                     <table className="table-auto w-full ">
-                        <thead className="border border-primary">
+                        <thead className="">
                             <tr>
                                 <th className="p-3 text-left">Image</th>
                                 <th className="p-3 text-left">Model</th>
