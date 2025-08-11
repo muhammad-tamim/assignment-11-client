@@ -8,7 +8,11 @@ const AddCar = () => {
     const contextData = useContext(context);
 
     if (!contextData || !contextData.handleSignUp) {
-        return <LoadingSpinner></LoadingSpinner>;
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <LoadingSpinner />
+            </div>
+        );
     }
     const { user } = contextData || {};
 
@@ -44,8 +48,8 @@ const AddCar = () => {
     return (
         <>
             < Toaster position='top-right' />
-            <div className='max-w-screen-2xl mx-auto px-4 lg:px-10 my-20'>
-                <form onSubmit={handleSubmit} className="space-y-4 p-6 rounded shadow-md max-w-xl mx-auto">
+            <div className='mt-40 px-4 lg:px-10 my-20'>
+                <form onSubmit={handleSubmit} className="space-y-4 p-6 rounded shadow-md max-w-xl mx-auto border border-white">
                     {/* Car Model */}
                     <div>
                         <label className="block mb-1 font-medium">Car Model</label>
