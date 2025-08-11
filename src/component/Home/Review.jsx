@@ -12,7 +12,7 @@ const Review = () => {
     return (
         <Fade>
             <section
-                className="bg-cover bg-center bg-no-repeat py-12 mb-20"
+                className="bg-cover bg-center bg-no-repeat py-12 mb-20 max-w-[1920px] mx-auto"
                 style={{
                     backgroundImage:
                         "url('https://lightingequipmentsales.com/wp-content/uploads/2017/12/LED-Street-Light-740x416.jpg')",

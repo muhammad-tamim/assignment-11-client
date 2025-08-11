@@ -9,13 +9,13 @@ const SpecialOffers = () => {
             title: 'Economy Drive',
             price: 'Free',
             description: 'Perfect for quick trips and budget-friendly rides.',
-            image: 'https://shorturl.at/N2vfO',
+            image: 'https://shorturl.at/middU',
         },
         {
             title: 'Business Elite',
             price: 'Custom',
             description: 'Tailored plans for corporate clients and executives.',
-            image: 'https://shorturl.at/6UxFb',
+            image: 'https://shorturl.at/swB3Y',
         },
         {
             title: 'Family Package',
@@ -26,8 +26,8 @@ const SpecialOffers = () => {
         {
             title: 'Adventure Pro',
             price: '$49.99',
-            description: 'For road trips and off-road journeys.',
-            image: 'https://shorturl.at/PGzo7',
+            description: 'For continuous road trips and off-road journeys.',
+            image: 'https://shorturl.at/JXyev',
         },
     ];
     return (
