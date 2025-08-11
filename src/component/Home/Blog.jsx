@@ -42,8 +42,9 @@ const Blog = () => {
                     {/* Grid Blog Posts */}
                     <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         <a
+                            target='_blank'
                             rel="noopener noreferrer"
-                            href="#"
+                            href="https://monzaexotics.com/top-5-sports-cars-you-can-rent-for-an-unforgettable-drive/"
                             className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50"
                         >
                             <img
@@ -65,8 +66,9 @@ const Blog = () => {
                         </a>
 
                         <a
+                            target='_blank'
                             rel="noopener noreferrer"
-                            href="#"
+                            href="https://www.europcar.com/en-us/p/car-rental/fleet/type/electric/benefits"
                             className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50"
                         >
                             <img
@@ -88,8 +90,9 @@ const Blog = () => {
                         </a>
 
                         <a
+                            target='_blank'
                             rel="noopener noreferrer"
-                            href="#"
+                            href="https://www.caranddriver.com/rankings/best-family-cars"
                             className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50"
                         >
                             <img
@@ -111,8 +114,9 @@ const Blog = () => {
                         </a>
 
                         <a
+                            target='_blank'
                             rel="noopener noreferrer"
-                            href="#"
+                            href="https://cars.usnews.com/cars-trucks/advice/most-comfortable-luxury-suvs"
                             className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50 hidden sm:block"
                         >
                             <img
@@ -134,8 +138,9 @@ const Blog = () => {
                         </a>
 
                         <a
+                            target='_blank'
                             rel="noopener noreferrer"
-                            href="#"
+                            href="https://www.toyotabaracarrental.com/en/blog/basic-car-knowledge/7867753453453453/"
                             className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50 hidden sm:block"
                         >
                             <img
@@ -157,8 +162,9 @@ const Blog = () => {
                         </a>
 
                         <a
+                            target='_blank'
                             rel="noopener noreferrer"
-                            href="#"
+                            href="https://www.enterprise.com/en/road-trips/planning.html"
                             className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50 hidden sm:block"
                         >
                             <img
@@ -181,12 +187,14 @@ const Blog = () => {
 
                     {/* Load More Button */}
                     <div className="flex justify-center">
-                        <button
+                        <a
+                            target='_blank'
+                            href='https://www.cars.com/news/'
                             type="button"
                             className="px-6 py-3 text-sm rounded-md hover:underline dark:bg-gray-50 dark:text-gray-600"
                         >
-                            Load more posts...
-                        </button>
+                            View More Blogs
+                        </a>
                     </div>
                 </div>
             </section>
