@@ -4,6 +4,7 @@ import { useState } from 'react';
 import LoadingSpinner from '../LoadingSpinner';
 import { formatDistanceToNow } from 'date-fns';
 import RecentListingsCard from './RecentListingsCard';
+import { Fade } from 'react-awesome-reveal';
 
 const RecentListings = () => {
     const [cars, setCars] = useState([]);
@@ -26,14 +27,16 @@ const RecentListings = () => {
     };
 
     return (
-        <div className='max-w-[1920px] mx-auto px-4 lg:px-10 my-20'>
-            <h1 className='text-center text-4xl font-bold mb-10'>Recent Listing</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20'>
+        <Fade>
+            <div className='max-w-[1920px] mx-auto px-4 lg:px-10 my-20'>
+                <h1 className='text-center text-4xl font-bold mb-10'>Recent Listing</h1>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20'>
 
-                {cars.map((car) => <RecentListingsCard car={car} getTimeAgo={getTimeAgo} key={car._id}></RecentListingsCard>)}
+                    {cars.map((car) => <RecentListingsCard car={car} getTimeAgo={getTimeAgo} key={car._id}></RecentListingsCard>)}
 
+                </div>
             </div>
-        </div>
+        </Fade>
     );
 };
 
