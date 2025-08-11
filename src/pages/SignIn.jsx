@@ -47,7 +47,7 @@ const SignIn = () => {
 
                     </div>
                 </div>
-                <button type='submit' className="btn bg-primary w-full">Sign In</button>
+                <button type='submit' className="btn bg-primary w-full text-white">Sign In</button>
             </form>
             <div className="flex items-center pt-4 space-x-1">
                 <div className="flex-1 h-px sm:w-16"></div>
