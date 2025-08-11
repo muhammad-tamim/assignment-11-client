@@ -42,13 +42,13 @@ const About = () => {
     });
 
     return (
-        <section className="bg-gray-50 text-gray-900 max-w-[1920px] mx-auto min-h-screen py-16 px-6 sm:px-12 lg:px-24 pt-40">
+        <section className=" max-w-[1920px] mx-auto min-h-screen py-16 px-6 sm:px-12 lg:px-24 pt-40">
             {/* Page header */}
             <div className="max-w-4xl mx-auto text-center mb-16">
                 <h1 className="text-5xl font-extrabold mb-4 tracking-tight">
                     About Drive Your Dreams
                 </h1>
-                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-lg  max-w-3xl mx-auto leading-relaxed">
                     Empowering your journeys with reliable vehicles, seamless booking, and
                     exceptional customer service. Wherever life takes you, drive your dreams
                     with confidence.
@@ -69,12 +69,12 @@ const About = () => {
 
                 <article className="md:w-1/2 space-y-6 text-center">
                     <h2 className="text-4xl font-bold">Why Choose Us?</h2>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className=" leading-relaxed">
                         We combine modern technology with a personal touch to make your car
                         rental experience seamless and enjoyable. Our easy-to-use platform
                         allows you to browse, book, and manage your rentals with just a few clicks.
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className=" leading-relaxed">
                         Safety and quality are our top priorities. Each vehicle undergoes regular
                         maintenance and thorough cleaning to ensure your peace of mind.
                     </p>
