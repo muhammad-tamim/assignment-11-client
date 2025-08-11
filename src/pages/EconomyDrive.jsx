@@ -81,9 +81,11 @@ const EconomyDrive = () => {
                             ))}
                         </ul>
                         <div className="mt-6">
-                            <button className="btn btn-primary">
-                                Book Now
-                            </button>
+                            <Link to="/availableCars">
+                                <button className="btn btn-primary ">
+                                    See Available Cars
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
