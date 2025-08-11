@@ -7,8 +7,8 @@ A full-featured Car Rental web application where users can explore, list, and bo
 
 ## 🧩 Project Structure
 This project consists of two parts:
-- **Client Repository**: [GitHub - Car Rental Client](https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-tamim-111)
-- **Server Repository**: [GitHub - Car Rental Server](https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-tamim-111)
+- **Client Repository**: [GitHub - Car Rental Client](https://github.com/muhammad-tamim/assignment-11-client)
+- **Server Repository**: [GitHub - Car Rental Server](https://github.com/muhammad-tamim/assignment-11-server)
 
 ---
 
@@ -64,9 +64,18 @@ The entire application is mobile-first and adapts beautifully to tablet and desk
 
 ---
 
-## 💾 Installation Instructions
+## 💾 Installation Guide
 
-### Clone the Repositories
+Follow these steps to set up and run the project locally.
+
+### 1. Clone the Repositories
+
 ```bash
-git clone https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-tamim-111
-git clone https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-tamim-111
+git clone https://github.com/muhammad-tamim/assignment-11-client.git
+git clone https://github.com/muhammad-tamim/assignment-11-server.git
+```npm install
+### 2. Install the Dependencies
+
+```bash
+npm installnpm install
+```
