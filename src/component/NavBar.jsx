@@ -42,8 +42,8 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 z-1 mt-3 w-52 p-2 shadow"
                     >
                         <li><NavLink to="/" className={({ isActive }) => isActive ? "text-primary" : ''}>Home</NavLink></li>
-                        <li><NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink></li>
                         <li><NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink></li>
+                        <li><NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink></li>
                         {user && (
                             <>
                                 <li><NavLink to="/AddCar" className={({ isActive }) => isActive ? "text-primary" : ''}>Add Car</NavLink></li>
@@ -51,6 +51,17 @@ const Navbar = () => {
                                 <li><NavLink to="/MyBookings" className={({ isActive }) => isActive ? "text-primary" : ''}>My Bookings</NavLink></li>
                             </>
                         )}
+                        <li>
+                            {!user ? (
+                                <NavLink to="/signin" className={({ isActive }) => isActive ? "text-primary" : 'hover:text-primary'}>
+                                    SignIn
+                                </NavLink>
+                            ) : (
+                                <a onClick={handleSubmit} className="cursor-pointer hover:text-primary">
+                                    SignOut
+                                </a>
+                            )}
+                        </li>
                     </ul>
                 </div>
                 {/* Logo */}
@@ -63,8 +74,8 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex xl:text-xl">
                 <ul className="flex gap-5 px-1">
                     <li><NavLink to="/" className={({ isActive }) => isActive ? "text-primary" : ''}>Home</NavLink></li>
-                    <li><NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink></li>
                     <li><NavLink to="/about" className={({ isActive }) => isActive ? "text-primary" : ''}>About</NavLink></li>
+                    <li><NavLink to="/AvailableCars" className={({ isActive }) => isActive ? "text-primary" : ''}>Available Cars</NavLink></li>
                     {user && (
                         <>
                             <li><NavLink to="/AddCar" className={({ isActive }) => isActive ? "text-primary" : ''}>Add Car</NavLink></li>
@@ -72,25 +83,26 @@ const Navbar = () => {
                             <li><NavLink to="/MyBookings" className={({ isActive }) => isActive ? "text-primary" : ''}>My Bookings</NavLink></li>
                         </>
                     )}
+                    <li>
+                        {!user ? (
+                            <NavLink to="/signin" className={({ isActive }) => isActive ? "text-primary" : 'hover:text-primary'}>
+                                SignIn
+                            </NavLink>
+                        ) : (
+                            <a onClick={handleSubmit} className="cursor-pointer hover:text-primary">
+                                SignOut
+                            </a>
+                        )}
+                    </li>
                 </ul>
             </div>
 
             {/* Navbar end */}
             <div className="navbar-end gap-5 xl:text-xl">
                 {/* Theme toggle button */}
-                <button className="btn btn-ghost btn-circle" onClick={handleThemeToggle}>
+                <button className="btn btn-ghost btn-circle " onClick={handleThemeToggle}>
                     {theme === 'light' ? '🌙' : '☀️'}
                 </button>
-
-                {!user ? (
-                    <NavLink to="/signin" className={({ isActive }) => isActive ? "text-primary" : 'hover:text-primary'}>
-                        SignIn
-                    </NavLink>
-                ) : (
-                    <a onClick={handleSubmit} className="cursor-pointer hover:text-primary">
-                        SignOut
-                    </a>
-                )}
 
                 {user && (
                     <div className="dropdown dropdown-end">

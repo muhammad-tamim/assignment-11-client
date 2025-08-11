@@ -46,7 +46,7 @@ const About = () => {
             {/* Page header */}
             <div className="max-w-4xl mx-auto text-center mb-16">
                 <h1 className="text-5xl font-extrabold mb-4 tracking-tight">
-                    About Drive Your Dreams
+                    About Rapid Ride
                 </h1>
                 <p className="text-lg  max-w-3xl mx-auto leading-relaxed">
                     Empowering your journeys with reliable vehicles, seamless booking, and
