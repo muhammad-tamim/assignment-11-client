@@ -47,9 +47,15 @@ const AvailableCars = () => {
         return 0;
     });
 
-    if (loading) return <LoadingSpinner></LoadingSpinner>
+    if (loading)
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <LoadingSpinner />
+            </div>
+        );
+
     return (
-        <div className='max-w-[1920px] mx-auto px-4 lg:px-10 my-20 mt-40'>
+        <div className='max-w-[1920px] min-h-screen mx-auto px-4 lg:px-10 my-20 mt-40'>
             <h1 className='text-center text-4xl font-bold mb-10'>Available Cars</h1>
             <div className='flex flex-col lg:flex-row justify-between items-center gap-4 mb-8'>
                 <input
@@ -88,13 +94,13 @@ const AvailableCars = () => {
                 </div>
             ) : (
                 <div className="overflow-x-auto">
-                    <table className="table-auto w-full border-collapse dark:border-gray-600">
-                        <thead className="bg-gray-200 dark:bg-gray-700">
+                    <table className="table-auto w-full ">
+                        <thead className="border border-primary">
                             <tr>
-                                <th className="p-3 dark:border-gray-600 text-left">Image</th>
-                                <th className="p-3 dark:border-gray-600 text-left">Model</th>
-                                <th className="p-3 dark:border-gray-600 text-left">Description</th>
-                                <th className="p-3 dark:border-gray-600 text-left">Action</th>
+                                <th className="p-3 text-left">Image</th>
+                                <th className="p-3 text-left">Model</th>
+                                <th className="p-3 text-left">Description</th>
+                                <th className="p-3 text-left">Action</th>
                             </tr>
                         </thead>
                         <tbody>

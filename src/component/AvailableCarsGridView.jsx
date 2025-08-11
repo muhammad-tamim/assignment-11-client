@@ -12,7 +12,7 @@ const AvailableCarsGridView = ({ car }) => {
 
     return (
         <>
-            <div className="dark:bg-white dark:text-gray-900 rounded-lg shadow-md p-4 max-w-xs mx-auto hover:shadow-lg hover:scale-[1.03] transition-transform duration-300 ease-in-out cursor-pointer">
+            <div className="border border-white rounded-lg shadow-md p-4 max-w-xs mx-auto hover:shadow-lg hover:scale-[1.03] transition-transform duration-300 ease-in-out cursor-pointer">
                 <img
                     src={imageUrl}
                     alt={carModel}
@@ -20,7 +20,7 @@ const AvailableCarsGridView = ({ car }) => {
                     loading="lazy"
                 />
                 <h2 className="text-lg font-semibold mb-1 truncate">{carModel}</h2>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                <p className=" text-sm mb-4 line-clamp-3">
                     {shortDescription}
                 </p>
                 <Link to={`/carDetails/${car._id}`} className='btn btn-primary btn-sm' aria-label={`See more details about ${carModel}`}>

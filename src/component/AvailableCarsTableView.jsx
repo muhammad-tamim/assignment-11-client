@@ -3,7 +3,9 @@ import { Link } from 'react-router';
 
 const AvailableCarsTableView = ({ car }) => {
     return (
-        <tr className="bg-white dark:bg-gray-100 hover:bg-gray-50 dark:hover:bg-gray-200">
+        <tr
+            className="hover:border-b dark:hover:border-white"
+        >
             <td className="p-2">
                 <img
                     src={car.imageUrl}
@@ -12,7 +14,7 @@ const AvailableCarsTableView = ({ car }) => {
                 />
             </td>
             <td className="p-2 font-semibold">{car.carModel}</td>
-            <td className="p-2 text-gray-600 dark:text-gray-700 truncate max-w-xs">
+            <td className="p-2 truncate max-w-xs">
                 {car.description ? car.description.substring(0, 60) + '...' : 'No description'}
             </td>
             <td className="p-2">
