@@ -13,6 +13,10 @@ import Home from '../pages/Home';
 import carDetails from '../pages/carDetails';
 import LoadingSpinner from '../component/LoadingSpinner';
 import About from '../pages/About';
+import EconomyDrive from '../pages/EconomyDrive';
+import BusinessElite from '../pages/BusinessElite';
+import FamilyPackage from '../pages/FamilyPackage';
+import AdventurePro from '../pages/AdventurePro';
 
 const Router = createBrowserRouter([
     {
@@ -71,7 +75,22 @@ const Router = createBrowserRouter([
                     </PrivateRouter>
                 )
             },
-
+            {
+                path: '/economyDrive',
+                Component: EconomyDrive
+            },
+            {
+                path: '/businessElite',
+                Component: BusinessElite
+            },
+            {
+                path: '/familyPackage',
+                Component: FamilyPackage
+            },
+            {
+                path: '/adventurePro',
+                Component: AdventurePro
+            },
         ]
     }
 ])
