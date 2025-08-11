@@ -98,21 +98,25 @@ const MyBookings = () => {
     };
 
     if (loading) {
-        return <LoadingSpinner></LoadingSpinner>
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <LoadingSpinner />
+            </div>
+        );
     }
     console.log(bookings)
     return (
         <>
             <Toaster position="top-right" />
-            <div className="max-w-screen-2xl mx-auto px-4 lg:px-10 my-20">
+            <div className="max-w-screen-2xl mt-40 mx-auto px-4 lg:px-10 my-20">
                 <h1 className="text-center text-4xl mb-10">My Bookings</h1>
                 <p className="text-sm text-gray-500 italic text-center mb-2 lg:hidden">
                     Scroll left/right to view the full table:
                 </p>
 
-                <div className="overflow-x-auto border rounded shadow">
-                    <table className="table w-full text-sm">
-                        <thead className="bg-gray-100 text-gray-700 font-semibold">
+                <div className="overflow-x-auto w-full rounded-md border border-gray-200">
+                    <table className="table w-full">
+                        <thead className="">
                             <tr>
                                 <th>Car Image</th>
                                 <th>Car Model</th>
@@ -126,7 +130,7 @@ const MyBookings = () => {
                             {bookings.map((b) => (
                                 <tr
                                     key={b._id}
-                                    className="bg-white hover:bg-gray-100 transition duration-200"
+                                    className=""
                                 >
                                     <td>
                                         <img src={b.carImage} alt="car" className="w-16 h-16 rounded object-cover" />
@@ -134,28 +138,17 @@ const MyBookings = () => {
                                     <td>{b.carModel}</td>
                                     <td>{formatDateTime(b.createdAt)}</td>
                                     <td>${b.totalCost}</td>
-                                    <td>
-                                        <span
-                                            className={`badge text-white px-3 py-1 rounded ${b.bookingStatus === 'booked'
-                                                ? 'bg-green-500'
-                                                : b.bookingStatus === 'pending'
-                                                    ? 'bg-yellow-500'
-                                                    : 'bg-red-500'
-                                                }`}
-                                        >
-                                            {b.bookingStatus}
-                                        </span>
-                                    </td>
+                                    <td> {b?.bookingStatus}</td>
                                     <td className="space-x-2 flex my-5 mr-5">
                                         <button
-                                            className="btn btn-xs bg-blue-600 text-white hover:bg-blue-700"
+                                            className="btn btn-xs btn-primary"
                                             onClick={() => handleModify(b)}
                                         >
                                             <FaCalendarAlt className="inline mr-1" />
                                             Modify Date
                                         </button>
                                         <button
-                                            className="btn btn-xs bg-red-600 text-white hover:bg-red-700"
+                                            className="btn btn-xs btn-error"
                                             onClick={() => handleCancel(b._id)}
                                             disabled={b.bookingStatus === 'canceled'}
                                         >
