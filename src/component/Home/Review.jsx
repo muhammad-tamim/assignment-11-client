@@ -11,18 +11,36 @@ const Review = () => {
 
     return (
         <Fade>
-            <section
-                className="bg-cover bg-center bg-no-repeat py-12 mb-20 max-w-[1920px] mx-auto"
-                style={{
-                    backgroundImage:
-                        "url('https://lightingequipmentsales.com/wp-content/uploads/2017/12/LED-Street-Light-740x416.jpg')",
-                }}
-            >
-                {/* Dark overlay to improve text contrast */}
-                <div className="bg-black/60 py-12 px-5 rounded-3xl max-w-6xl mx-auto text-white">
-                    <h1 className='text-center text-4xl font-bold mb-10'>Our Achievements</h1>
+            <section className="relative py-12 mb-20 max-w-[1920px] mx-auto overflow-hidden">
+                {/* Video background */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    style={{ zIndex: -2 }}
+                    src="https://www.toyota.com/content/dam/toyota/homepage/tdr-marquee/2025/video/CAM_MY25_LCH_WelcomeMat_TCOM_Desktop_ENG_10_16x9_SSTY8794000H.mp4"
+                    type="video/mp4"
+                />
 
-                    <section ref={ref} className="p-6 rounded-3xl">
+                {/* Dark overlay for better text visibility */}
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundColor: 'rgba(0, 0, 0, 0.80)',
+                        zIndex: -1
+                    }}
+                ></div>
+
+                {/* Content container */}
+                <div
+                    ref={ref}
+                    className="relative bg-transparent text-white py-12 px-5 max-w-6xl mx-auto rounded-3xl"
+                >
+                    <h1 className="text-center text-4xl font-bold mb-10">Our Achievements</h1>
+
+                    <section className="p-6 rounded-3xl">
                         <div className="grid justify-center grid-cols-2 gap-6 text-center lg:grid-cols-3">
                             <div className="flex flex-col justify-center m-2">
                                 <p className="text-4xl font-bold leading-none lg:text-6xl">
