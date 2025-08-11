@@ -30,7 +30,7 @@ const SpecialOffersCard = ({ offer }) => {
                 />
             </div>
             <Link to={routeMap[title]}>
-                <button className="btn btn-primary">Learn More</button>
+                <button className="btn btn-primary btn-sm">Learn More</button>
             </Link>
         </div>
     );

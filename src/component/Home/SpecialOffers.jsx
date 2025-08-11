@@ -7,16 +7,11 @@ const SpecialOffers = () => {
     const offers = [
         {
             title: 'Economy Drive',
-            price: 'Free',
+            price: '$19.99',
             description: 'Perfect for quick trips and budget-friendly rides.',
-            image: 'https://shorturl.at/middU',
-        },
-        {
-            title: 'Business Elite',
-            price: 'Custom',
-            description: 'Tailored plans for corporate clients and executives.',
             image: 'https://shorturl.at/swB3Y',
         },
+
         {
             title: 'Family Package',
             price: '$29.99',
@@ -28,6 +23,12 @@ const SpecialOffers = () => {
             price: '$49.99',
             description: 'For continuous road trips and off-road journeys.',
             image: 'https://shorturl.at/JXyev',
+        },
+        {
+            title: 'Business Elite',
+            price: 'Custom',
+            description: 'Tailored plans for corporate clients and executives.',
+            image: 'https://shorturl.at/middU',
         },
     ];
     return (
