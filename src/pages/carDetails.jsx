@@ -98,13 +98,17 @@ const carDetails = () => {
     };
 
 
-    if (loading) return <LoadingSpinner></LoadingSpinner>;
-
+    if (loading)
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <LoadingSpinner />
+            </div>
+        );
     return (
         <>
             <Toaster position="top-right" />
-            <main className="max-w-6xl mt-40 mx-auto p-6 lg:p-12 my-12 bg-white dark:bg-gray-50 rounded-lg shadow-lg">
-                <h1 className="text-4xl font-extrabold mb-8 text-center dark:text-gray-900">{car.carModel}</h1>
+            <main className="max-w-6xl mt-40 mx-auto p-6 lg:p-12 my-12 border border-white rounded-lg shadow-lg">
+                <h1 className="text-4xl font-extrabold mb-8 text-center ">{car.carModel}</h1>
                 <div className="flex flex-col lg:flex-row gap-10">
                     {/* Image */}
                     <img
@@ -115,7 +119,7 @@ const carDetails = () => {
                     />
 
                     {/* Details */}
-                    <section className="flex flex-col justify-between lg:w-1/2 space-y-6 text-gray-700 dark:text-gray-900">
+                    <section className="flex flex-col justify-between lg:w-1/2 space-y-6 ">
                         <div className="space-y-3">
                             <p className="text-lg">
                                 <span className="font-semibold">Price per Day:</span> ${car.rentalPrice}
@@ -144,12 +148,12 @@ const carDetails = () => {
 
                             <div>
                                 <h2 className="font-semibold text-xl mb-1">Description:</h2>
-                                <p className="text-gray-600">{car.description || 'No description available.'}</p>
+                                <p >{car.description || 'No description available.'}</p>
                             </div>
 
                             <div>
                                 <h2 className="font-semibold text-xl mb-1">Features:</h2>
-                                <p className="text-gray-600">{car.features || 'No features listed.'}</p>
+                                <p >{car.features || 'No features listed.'}</p>
                             </div>
                         </div>
 
@@ -168,7 +172,7 @@ const carDetails = () => {
                     <dialog open className="modal bg-black bg-opacity-50 fixed inset-0 flex items-center justify-center z-50">
                         <form
                             method="dialog"
-                            className="modal-box bg-white dark:bg-gray-50 p-6 rounded-lg max-w-md w-full"
+                            className="modal-box  p-6 rounded-lg max-w-md w-full"
                             onSubmit={e => {
                                 e.preventDefault();
                                 handleBooking();
@@ -176,7 +180,7 @@ const carDetails = () => {
                         >
                             <h3 className="text-2xl font-bold mb-4 text-center">Confirm Booking</h3>
 
-                            <div className="space-y-4 mb-6 text-gray-700 dark:text-gray-900">
+                            <div className="space-y-4 mb-6 ">
                                 <p>
                                     <strong>Model:</strong> {car.carModel}
                                 </p>
@@ -227,7 +231,7 @@ const carDetails = () => {
                                 </button>
                                 <button
                                     type="button"
-                                    className="btn"
+                                    className="btn btn-error"
                                     onClick={() => setShowModal(false)}
                                 >
                                     Cancel
